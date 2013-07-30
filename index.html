@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Talk Like a Schiffer For Free</title>
+	
+	<style type="text/css" media="screen">
+		body { font-family: Helvetica, Arial, sans-serif; background: #99cccc; margin: 0 auto; width: 40%; min-width: 500px; }
+		#container { background: #fff; padding: 20px; }
+		label { font-weight: bold; margin: 20px 0 10px; display: block; }
+		textarea { display: block; width: 100%; min-height: 100px; font-family: 'comic sans ms', sans-serif; }
+		#submit { text-align: right; }
+		#submit input { padding: 20px; }
+		#credit { text-align: right; }
+		#credit a { font-size: .8em; font-style: italic; text-decoration: none; color: #c66; }
+	</style>
+</head>
+
+<body>
+	<div id="container">
+	
+		<h1>BABELSCHIFF</h1>
+		<h2>instantly sound smarter by talking like you're part of the Schiffer family</h2>
+		
+		<label for="native">your language:</label>
+		<textarea id="native"></textarea>
+		<div id="submit">
+			<input type="submit" value="translate to schiffer" />
+		</div>
+		
+		<label for="schiffer">the schiffers' language:</label>
+		<textarea id="schiffer"></textarea>
+		
+		<p id="credit"><a href="http://twitter.com/jennschiffer">built by beyonce for beyonce</a></p>
+	
+	</div>
+	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var $submit = $('#submit input');
+			var $native = $('#native');
+			var $schiffer = $('#schiffer');
+			
+			var schiffer = function( length ) {
+				var word;
+				
+				switch( length ) {
+					case 0:
+						break;
+					case 1:
+						word = 'no';
+						break;
+					case 2:
+						word = 'no';
+						break;
+					case 4:
+						word = 'nope';
+						break;
+					default:
+						word = 'n';
+						for ( var j = 0; j < length-1; j++) {
+							word += 'o';
+						}
+				};
+				return word;
+			};
+			
+			var translate = function( nativeText ) {
+				var tokens = nativeText.split(' ');
+				var translatedString = '';
+				
+				for (var i = 0; i < tokens.length; i++){
+					var length = tokens[i].length;
+					translatedString += schiffer(length) + ' ';
+				}
+				$schiffer.val(translatedString);
+			};
+			
+			$submit.click(function(){
+				var txt = $native.val();
+				translate(txt);
+			});
+		});
+	</script>
+	
+	<script src="//pmetrics.performancing.com/js" type="text/javascript"></script>
+<script type="text/javascript">try{ clicky.init(14721); }catch(e){}</script>
+<noscript><p><img alt="Performancing Metrics" width="1" height="1" src="//pmetrics.performancing.com/14721ns.gif" /></p></noscript>
+</body>
+</html>
