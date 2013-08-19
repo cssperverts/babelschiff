@@ -61,16 +61,24 @@
 							word += 'o';
 						}
 				};
+				
 				return word;
 			};
 			
 			var translate = function( nativeText ) {
 				var tokens = nativeText.split(' ');
 				var translatedString = '';
+				var schifferWord;
 				
 				for (var i = 0; i < tokens.length; i++){
 					var length = tokens[i].length;
-					translatedString += schiffer(length) + ' ';
+					schifferWord = schiffer(length);
+					
+					if ( tokens[i].toLowerCase() == 'nope' ) {
+						schifferWord = 'Jenn';
+					}
+					
+					translatedString += schifferWord + ' ';
 				}
 				$schiffer.val(translatedString);
 			};
