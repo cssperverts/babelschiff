@@ -85,7 +85,11 @@
 			
 			$submit.click(function(){
 				var txt = $native.val();
-				translate(txt);
+				if (txt) {
+					translate(txt);
+				} else{
+					$schiffer.val('duh, dad')
+				}
 			});
 		});
 	</script>
